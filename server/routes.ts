@@ -1,8 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { db, formatDateString } from './database';
-import { UserRole, AttendanceStatus, AttendanceSessionType } from '../src/types';
+import { db, formatDateString } from './database.js';
+import { UserRole, AttendanceStatus, AttendanceSessionType } from '../src/types.js';
 
 export const routes = Router();
 

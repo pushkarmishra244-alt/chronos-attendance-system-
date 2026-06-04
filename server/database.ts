@@ -14,7 +14,7 @@ import {
   AttendanceStatus,
   AttendanceSessionType,
   LeaveStatus
-} from '../src/types';
+} from '../src/types.js';
 
 export interface DatabaseSchema {
   users: Array<User & { passwordHash: string }>;
