@@ -50,19 +50,23 @@ class DatabaseManager {
   }
 
   private init() {
-    if (!fs.existsSync(DB_DIR)) {
-      fs.mkdirSync(DB_DIR, { recursive: true });
-    }
-
-    if (fs.existsSync(DB_FILE)) {
-      try {
-        const raw = fs.readFileSync(DB_FILE, 'utf-8');
-        this.data = JSON.parse(raw);
-        console.log('Database loaded successfully from file.');
-        return;
-      } catch (err) {
-        console.error('Error loading database, seeding fresh data:', err);
+    try {
+      if (!fs.existsSync(DB_DIR)) {
+        fs.mkdirSync(DB_DIR, { recursive: true });
       }
+
+      if (fs.existsSync(DB_FILE)) {
+        try {
+          const raw = fs.readFileSync(DB_FILE, 'utf-8');
+          this.data = JSON.parse(raw);
+          console.log('[DATABASE] Database loaded successfully from file.');
+          return;
+        } catch (err) {
+          console.error('[DATABASE ERRROR] Error loading database file, using seed fallback:', err);
+        }
+      }
+    } catch (err) {
+      console.warn('[DATABASE WARNING] Read-only or inaccessible filesystem during initialization. Operating in memory only.', err);
     }
 
     this.seedFreshData();
@@ -70,9 +74,23 @@ class DatabaseManager {
 
   private save() {
     try {
-      fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf-8');
+      // Safely check if directory exists/can be created before writing
+      let canWrite = true;
+      if (!fs.existsSync(DB_DIR)) {
+        try {
+          fs.mkdirSync(DB_DIR, { recursive: true });
+        } catch {
+          canWrite = false;
+        }
+      }
+      if (canWrite) {
+        fs.writeFileSync(DB_FILE, JSON.stringify(this.data, null, 2), 'utf-8');
+        console.log('[DATABASE] Changes successfully flushed to disk.');
+      } else {
+        console.warn('[DATABASE] Write skipped due to inaccessible filesystem directory.');
+      }
     } catch (err) {
-      console.error('Error saving database to file:', err);
+      console.warn('[DATABASE WARNING] Failed to write database state to file. Changes persist in-memory.', err);
     }
   }
 
