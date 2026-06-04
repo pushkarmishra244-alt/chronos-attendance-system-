@@ -209,46 +209,46 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
   return (
     <div className="space-y-6">
       {/* Admin tabs */}
-      <div className="flex border-b border-slate-200 dark:border-slate-850 gap-1 overflow-x-auto select-none font-sans">
+      <div className="flex border-b border-slate-200 dark:border-slate-800 gap-1 overflow-x-auto select-none font-display">
         <button
           onClick={() => setActiveTab('users')}
-          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-[#0058be] transition-all ${
+          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-blue-600 transition-all ${
             activeTab === 'users' 
-              ? 'border-[#0058be] text-[#0058be] bg-blue-50/40 dark:bg-blue-950/20 font-bold' 
+              ? 'border-blue-600 text-blue-600 bg-blue-50/50 dark:bg-blue-950/20' 
               : 'border-transparent text-slate-500'
           } whitespace-nowrap cursor-pointer`}
         >
-          <Users className="w-4 h-4 text-[#0058be]" /> System Users CRUD
+          <Users className="w-4 h-4" /> System Users CRUD
         </button>
         <button
           onClick={() => setActiveTab('classes')}
-          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-[#0058be] transition-all ${
+          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-blue-600 transition-all ${
             activeTab === 'classes' 
-              ? 'border-[#0058be] text-[#0058be] bg-blue-50/40 dark:bg-blue-950/20 font-bold' 
+              ? 'border-blue-600 text-blue-600 bg-blue-50/50 dark:bg-blue-950/20' 
               : 'border-transparent text-slate-500'
           } whitespace-nowrap cursor-pointer`}
         >
-          <GraduationCap className="w-4 h-4 text-[#0058be]" /> Classes & Subjects
+          <GraduationCap className="w-4 h-4" /> Classes & Subjects
         </button>
         <button
           onClick={() => setActiveTab('settings')}
-          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-[#0058be] transition-all ${
+          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-blue-600 transition-all ${
             activeTab === 'settings' 
-              ? 'border-[#0058be] text-[#0058be] bg-blue-50/40 dark:bg-blue-950/20 font-bold' 
+              ? 'border-blue-600 text-blue-600 bg-blue-50/50 dark:bg-blue-950/20' 
               : 'border-transparent text-slate-500'
           } whitespace-nowrap cursor-pointer`}
         >
-          <Settings className="w-4 h-4 text-[#0058be]" /> Compliance Rules & GPS Fences
+          <Settings className="w-4 h-4" /> Compliance Rules & GPS Fences
         </button>
         <button
           onClick={() => setActiveTab('logs')}
-          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-[#0058be] transition-all ${
+          className={`flex items-center gap-2 text-xs font-semibold px-4 py-3 border-b-2 hover:text-blue-600 transition-all ${
             activeTab === 'logs' 
-              ? 'border-[#0058be] text-[#0058be] bg-blue-50/40 dark:bg-blue-950/20 font-bold' 
+              ? 'border-blue-600 text-blue-600 bg-blue-50/50 dark:bg-blue-950/20' 
               : 'border-transparent text-slate-500'
           } whitespace-nowrap cursor-pointer`}
         >
-          <History className="w-4 h-4 text-[#0058be]" /> Chronological Security Audit Logs
+          <History className="w-4 h-4" /> Chronological Security Audit Logs
         </button>
       </div>
 
@@ -265,10 +265,10 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
           {activeTab === 'users' && (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in">
               <div className="lg:col-span-2 space-y-6">
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm overflow-hidden transition-colors">
-                  <div className="px-6 py-4.5 border-b border-slate-150 dark:border-slate-850 flex items-center justify-between">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden transition-colors">
+                  <div className="px-6 py-4.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
                     <div>
-                      <h3 className="text-sm font-semibold text-slate-805 dark:text-slate-105 font-sans">User Records List</h3>
+                      <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">User Records List</h3>
                       <p className="text-xs text-slate-400 mt-0.5">Edit or delete institutional user credentials securely.</p>
                     </div>
                     <button
@@ -277,7 +277,7 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                         setUserForm({ name: '', email: '', role: 'student', department: 'Computer Science', leaveBalance: 8, password: 'studentPassword' });
                         setShowUserModal(true);
                       }}
-                      className="flex items-center gap-1.5 text-[11px] font-semibold px-4 py-2 bg-[#0058be] text-white rounded-xl hover:bg-[#2563eb] transition-all cursor-pointer shadow-sm shadow-[#0058be]/10"
+                      className="flex items-center gap-1 text-[11px] font-semibold px-3 py-1.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors cursor-pointer"
                     >
                       <UserPlus className="w-3.5 h-3.5" /> Register User
                     </button>
@@ -286,15 +286,15 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                   <div className="overflow-x-auto">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="bg-slate-50/80 dark:bg-slate-950 text-[10px] font-mono text-slate-450 uppercase tracking-widest border-b border-slate-150 dark:border-slate-850 select-none">
-                          <th className="px-6 py-3.5">Name</th>
-                          <th className="px-6 py-3.5">Role</th>
-                          <th className="px-6 py-3.5">Department</th>
-                          <th className="px-6 py-3.5 whitespace-nowrap">Leave Balance</th>
-                          <th className="px-6 py-3.5 text-right">Actions</th>
+                        <tr className="bg-slate-50 dark:bg-slate-950 text-[10px] font-mono text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800">
+                          <th className="px-6 py-3">Name</th>
+                          <th className="px-6 py-3">Role</th>
+                          <th className="px-6 py-3">Department</th>
+                          <th className="px-6 py-3 whitespace-nowrap">Leave Balance</th>
+                          <th className="px-6 py-3 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100 dark:divide-slate-850 text-xs">
+                      <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60 text-xs">
                         {users.map(u => (
                           <tr key={u.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-950/10 text-slate-600 dark:text-slate-300">
                             <td className="px-6 py-4">
@@ -341,11 +341,11 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
               </div>
 
               {/* Bulk import tool */}
-              <div className="space-y-6 font-sans">
-                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-850 shadow-sm p-6 transition-colors">
-                  <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-850 pb-3">
+              <div className="space-y-6">
+                <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 transition-colors">
+                  <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
                     <FileSpreadsheet className="w-4 h-4 text-emerald-500" />
-                    <h3 className="text-xs font-semibold text-slate-808 dark:text-slate-100 font-sans">CSV Bulk Student Import</h3>
+                    <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">CSV Bulk Student Import</h3>
                   </div>
 
                   <p className="text-xs text-slate-400 mt-2">
@@ -353,11 +353,11 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                   </p>
 
                   <div className="mt-4">
-                    <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 px-3 py-1.5 rounded-xl text-[10px] text-slate-450 font-mono mb-2">
+                    <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl text-[10px] text-slate-400 font-mono mb-2">
                       <span>Header coordinates template</span>
                       <button
                         onClick={() => setCsvText(SAMPLE_CSV)}
-                        className="text-[#0058be] hover:underline cursor-pointer font-bold"
+                        className="text-blue-500 hover:underline cursor-pointer"
                       >
                         Insert Demo CSV
                       </button>
@@ -368,13 +368,13 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                       onChange={(e) => setCsvText(e.target.value)}
                       placeholder={SAMPLE_CSV}
                       rows={6}
-                      className="w-full text-xs font-mono p-3 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none focus:ring-1 focus:ring-[#0058be] transition-colors scrollbar"
+                      className="w-full text-xs font-mono p-3 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 rounded-xl focus:border-blue-500 focus:outline-none transition-colors scrollbar"
                     />
                   </div>
 
                   <button
                     onClick={handleBulkImport}
-                    className="w-full text-xs font-semibold py-2.5 bg-[#0058be] hover:bg-[#2563eb] text-white rounded-xl shadow-sm transition-all cursor-pointer mt-3"
+                    className="w-full text-xs font-semibold py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl shadow-sm hover:from-emerald-700 hover:to-emerald-800 transition-all cursor-pointer mt-3"
                   >
                     Deploy CSV Upload
                   </button>
@@ -393,10 +393,10 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
           {activeTab === 'classes' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fade-in">
               {/* Classes Department Creator */}
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-sm transition-colors space-y-4 font-sans">
-                <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-850 pb-3">
-                  <GraduationCap className="w-4 h-4 text-[#0058be]" />
-                  <h3 className="text-sm font-semibold text-slate-805 dark:text-slate-100 font-sans">Manage Departments / Classes</h3>
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors space-y-4">
+                <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
+                  <GraduationCap className="w-4 h-4 text-blue-500" />
+                  <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">Manage Departments / Classes</h3>
                 </div>
 
                 <form onSubmit={handleCreateClass} className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-end">
@@ -408,7 +408,7 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                       onChange={(e) => setNewClass({ ...newClass, name: e.target.value })}
                       placeholder="e.g. Electrical Engineering"
                       required
-                      className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-205 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none"
+                      className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-blue-500"
                     />
                   </div>
                   <div className="space-y-1">
@@ -419,12 +419,12 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                       onChange={(e) => setNewClass({ ...newClass, code: e.target.value })}
                       placeholder="e.g. EE-DEPT"
                       required
-                      className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none"
+                      className="w-full text-xs p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:border-blue-500"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full text-xs font-semibold py-2.5 bg-[#0058be] hover:bg-[#2563eb] text-white rounded-xl transition-colors cursor-pointer shadow-sm flex items-center justify-center gap-1"
+                    className="w-full text-xs font-semibold py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors cursor-pointer shadow-sm flex items-center justify-center gap-1"
                   >
                     <Plus className="w-3.5 h-3.5" /> Class
                   </button>
@@ -460,10 +460,10 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
               </div>
 
               {/* Subject Creator Mappings */}
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-sm transition-colors space-y-4 font-sans">
-                <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-855 pb-3">
+              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors space-y-4">
+                <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
                   <BookOpen className="w-4 h-4 text-emerald-500" />
-                  <h3 className="text-sm font-semibold text-slate-808 dark:text-slate-100 font-sans">Manage Subjects</h3>
+                  <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">Manage Subjects</h3>
                 </div>
 
                 <form onSubmit={handleCreateSubject} className="grid grid-cols-1 sm:grid-cols-4 gap-3 items-end">
@@ -549,10 +549,10 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
 
           {/* RULES AND COMPLIANCE CONFIG TAB */}
           {activeTab === 'settings' && (
-            <div className="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-sm transition-colors animate-fade-in space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-850 pb-3">
-                <Sliders className="w-4 h-4 text-[#0058be]" />
-                <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-sans">University Compliance Controls</h3>
+            <div className="max-w-xl mx-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors animate-fade-in space-y-4">
+              <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
+                <Sliders className="w-4 h-4 text-blue-500" />
+                <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">University Compliance Controls</h3>
               </div>
 
               <form onSubmit={handleUpdateSettings} className="space-y-4 text-xs">
@@ -565,7 +565,7 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                     max={100}
                     value={settings.minAttendanceThreshold}
                     onChange={(e) => setSettings({ ...settings, minAttendanceThreshold: Number(e.target.value) })}
-                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none focus:ring-1 focus:ring-[#0058be] transition-all"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none"
                   />
                 </div>
 
@@ -578,13 +578,13 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                     max={60}
                     value={settings.lateThresholdMins}
                     onChange={(e) => setSettings({ ...settings, lateThresholdMins: Number(e.target.value) })}
-                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none focus:ring-1 focus:ring-[#0058be] transition-all"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none"
                   />
                 </div>
 
-                <div className="bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl p-4 space-y-3">
-                  <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-850/80 pb-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#0058be]" />
+                <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3">
+                  <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/60 pb-2">
+                    <MapPin className="w-3.5 h-3.5 text-blue-500" />
                     <span className="font-semibold text-[11px] font-mono tracking-wider uppercase text-slate-400">Class GPS Fencing Zones</span>
                   </div>
 
@@ -624,7 +624,7 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 bg-[#0058be] hover:bg-[#2563eb] text-white font-semibold rounded-xl cursor-pointer transition-all shadow-sm"
+                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl cursor-pointer transition-colors"
                 >
                   Save Global Threshold Settings
                 </button>
@@ -766,17 +766,17 @@ Charles Babbage,charles.b@attendance.co,student,Computer Science,studentPassword
                 />
               </div>
 
-              <div className="flex gap-2.5 pt-4 font-sans">
+              <div className="flex gap-2.5 pt-4">
                 <button
                   type="button"
                   onClick={() => setShowUserModal(false)}
-                  className="flex-1 py-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-300 rounded-xl transition-all cursor-pointer font-semibold text-center border border-slate-150 dark:border-slate-850"
+                  className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl transition-colors cursor-pointer font-semibold text-center"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-[#0058be] flex-1 py-2.5 bg-[#0058be] hover:bg-[#2563eb] text-white rounded-xl transition-all cursor-pointer font-semibold text-center"
+                  className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors cursor-pointer font-semibold text-center"
                 >
                   {editingUser ? 'Save Updates' : 'Deploy User'}
                 </button>

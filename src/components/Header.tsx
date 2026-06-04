@@ -182,12 +182,12 @@ export default function Header({ user, currentView, isDarkMode, onThemeToggle, o
 
           {/* QUICK INITIAL USER DISCOVERY AVATAR */}
           <div className="hidden sm:flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-3.5">
-            <div className="w-8 h-8 rounded-xl bg-[#0058be] text-white flex justify-center items-center font-semibold text-xs shadow-sm font-mono uppercase">
-              {user.name.slice(0, 2).toUpperCase()}
+            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex justify-center items-center font-bold text-xs shadow-md shadow-blue-500/10 font-mono uppercase">
+              {user.name.slice(0, 2)}
             </div>
             <div className="flex flex-col">
-              <span className="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">{user.name}</span>
-              <span className="text-[9px] font-mono tracking-wide uppercase text-slate-455 font-bold">{user.role} badge</span>
+              <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">{user.name}</span>
+              <span className="text-[9px] font-mono uppercase text-slate-400 font-bold">{user.role} badge</span>
             </div>
           </div>
 
