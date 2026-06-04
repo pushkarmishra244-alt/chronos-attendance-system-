@@ -1,0 +1,11 @@
+{
+  "name": "Attendance Management System",
+  "description": "A comprehensive Attendance Management System for tracking classes, manual & QR attendance, leave requests, and role-based analytics dashboards.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
