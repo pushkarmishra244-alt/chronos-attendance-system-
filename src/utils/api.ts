@@ -63,12 +63,36 @@ async function request(path: string, options: RequestInit = {}) {
     }
   }
 
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || 'Something went wrong with the server transaction.');
-  }
+  const contentType = response.headers.get('content-type') || '';
+  const isJSON = contentType.includes('application/json');
 
-  return data;
+  if (isJSON) {
+    let data;
+    try {
+      data = await response.json();
+    } catch (parseErr) {
+      throw new Error('Failed to parse response JSON from server.');
+    }
+    
+    if (!response.ok) {
+      throw new Error(data?.message || `Server returned error status code: ${response.status}`);
+    }
+    return data;
+  } else {
+    const text = await response.text();
+    if (!response.ok) {
+      // If server returned HTML but it's an error status, throw a concise error text or the raw response summary
+      if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
+        throw new Error(`Server returned HTML error response (Status ${response.status}).`);
+      }
+      throw new Error(text || `Server returned error status code: ${response.status}`);
+    }
+    try {
+      return JSON.parse(text);
+    } catch {
+      return text;
+    }
+  }
 }
 
 export const api = {

@@ -1,28 +1,10 @@
 import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-import { routes } from './server/routes';
+import app from './server/app';
 
-async function startServer() {
-  const app = express();
+async function startLocalServer() {
   const PORT = 3000;
-
-  // Body parsing middleware
-  app.use(express.json());
-
-  // Log incoming API calls
-  app.use((req, res, next) => {
-    console.log(`[HTTP REST Server] ${req.method} ${req.url}`);
-    next();
-  });
-
-  // Mount API paths
-  app.use('/api', routes);
-
-  // Health check endpoint
-  app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', serverTime: new Date().toISOString() });
-  });
 
   // Vite integration as middleware in development
   if (process.env.NODE_ENV !== 'production') {
@@ -50,6 +32,6 @@ async function startServer() {
   });
 }
 
-startServer().catch((error) => {
+startLocalServer().catch((error) => {
   console.error('[ERROR] Failed starting Node HTTP Server:', error);
 });
