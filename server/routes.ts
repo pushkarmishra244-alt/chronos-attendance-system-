@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { db, formatDateString } from './database.js';
 import { UserRole, AttendanceStatus, AttendanceSessionType } from '../src/types.js';
+import { GoogleGenAI } from '@google/genai';
 
 export const routes = Router();
 
@@ -867,4 +868,40 @@ routes.get('/dashboard/stats', authenticateJWT, (req: AuthenticatedRequest, res:
     weeklyTrends: last7Days,
     leavePendingCount
   });
+});
+
+// Initialize Gemini client on server-side with metadata header for AI Studio
+const genAIClient = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+  httpOptions: {
+    headers: {
+      'User-Agent': 'aistudio-build'
+    }
+  }
+});
+
+// Mentality landing page chat assistant router endpoint
+routes.post('/chat-mentality', async (req: Request, res: Response) => {
+  const { query } = req.body;
+  if (!query) {
+    return res.status(400).json({ message: 'A prompt or query text is required.' });
+  }
+
+  try {
+    const response = await genAIClient.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: query,
+      config: {
+        systemInstruction: `You are an empathetic, highly professional, and extremely knowledgeable mental health and wellbeing educational counselor. 
+The platform is called "mėntality". Provide warm, constructive, and clinically-informed educational information to support stress management, anxiety relief, emotional validation, and mindful habits.
+Keep your response supportive, clear, structured in clean and highly readable markdown, and concise (about 2-3 short paragraphs maximum).
+CRITICAL SAFETY RULE: If the query suggests active crisis, severe self-harm ideation, or clinical emergencies, you MUST kindly and clearly advise professional intervention immediately, and provide standard resources (such as 988 Crisis Lifeline, national crisis helplines, or immediate emergency support).`
+      }
+    });
+
+    res.json({ response: response.text });
+  } catch (err: any) {
+    console.error('[GEMINI BACKEND FAIL]', err);
+    res.status(500).json({ message: 'Apologies, our mentality assistant is currently experiencing high latency. Please retry shortly.' });
+  }
 });

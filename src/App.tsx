@@ -7,6 +7,9 @@ import ReportsView from './components/ReportsView';
 import AdminPanel from './components/AdminPanel';
 import TeacherPanel from './components/TeacherPanel';
 import StudentPanel from './components/StudentPanel';
+import { motion, AnimatePresence } from 'motion/react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import { 
   WeeklyTrendChart, 
   DistributionPieChart, 
@@ -36,6 +39,7 @@ export default function App() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   // Auth pages states
   const [authForm, setAuthForm] = useState({ email: '', password: '' });
