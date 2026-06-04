@@ -223,10 +223,10 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in text-xs">
         
         {/* SESSION INITIATOR FORM */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors space-y-4">
-          <div className="flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/80 pb-3">
-            <Plus className="w-4 h-4 text-blue-500" />
-            <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display">Launch Class Session</h3>
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-sm transition-colors space-y-4 font-sans">
+          <div className="flex items-center gap-2 border-b border-slate-150 dark:border-slate-855 pb-3">
+            <Plus className="w-4 h-4 text-[#0058be]" />
+            <h3 className="text-sm font-semibold text-slate-805 dark:text-slate-100 font-sans">Launch Class Session</h3>
           </div>
 
           <form onSubmit={handleCreateSession} className="space-y-4.5">
@@ -236,7 +236,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                 required
                 value={wizard.classId}
                 onChange={(e) => setWizard({ ...wizard, classId: e.target.value })}
-                className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none"
+                className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-704 dark:text-slate-200 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:ring-1 focus:ring-[#0058be] focus:outline-none transition-all"
               >
                 <option value="">Choose Class...</option>
                 {classes.map(c => (
@@ -251,7 +251,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                 required
                 value={wizard.subjectId}
                 onChange={(e) => setWizard({ ...wizard, subjectId: e.target.value })}
-                className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none"
+                className="w-full p-2.5 bg-slate-50 dark:bg-slate-950 text-slate-704 dark:text-slate-200 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:ring-1 focus:ring-[#0058be] focus:outline-none transition-all"
               >
                 <option value="">Choose Subject...</option>
                 {subjects.filter(s => !wizard.classId || s.classId === wizard.classId).map(s => (
@@ -276,11 +276,11 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                       onClick={() => setWizard({ ...wizard, type: mode.id as any })}
                       className={`py-2 px-1 text-center rounded-xl border flex flex-col items-center gap-1 transition-all ${
                         wizard.type === mode.id 
-                          ? 'border-blue-600 bg-blue-50 text-blue-600 dark:bg-blue-950/20 dark:border-blue-500' 
-                          : 'border-slate-200 dark:border-slate-800 text-slate-550 hover:bg-slate-50 dark:hover:bg-slate-950'
+                          ? 'border-[#0058be] bg-blue-50/60 text-[#0058be] dark:bg-blue-955/20 dark:border-[#0058be] font-bold' 
+                          : 'border-slate-150 dark:border-slate-850 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-950'
                       } cursor-pointer`}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-4 h-4 text-[#0058be]" />
                       <span className="text-[10px] font-semibold">{mode.label}</span>
                     </button>
                   );
@@ -321,7 +321,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                   min={1}
                   value={wizard.lateThresholdMins}
                   onChange={(e) => setWizard({ ...wizard, lateThresholdMins: Number(e.target.value) })}
-                  className="w-full p-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none font-sans"
                 />
               </div>
 
@@ -330,7 +330,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                 <select
                   value={wizard.timeSlot}
                   onChange={(e) => setWizard({ ...wizard, timeSlot: e.target.value })}
-                  className="w-full p-2 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl"
+                  className="w-full p-2 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-xl focus:border-[#0058be] focus:outline-none font-sans"
                 >
                   <option>09:00 AM - 10:30 AM</option>
                   <option>11:00 AM - 12:30 PM</option>
@@ -341,7 +341,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
 
             <button
               type="submit"
-              className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-sm shadow-blue-500/10 cursor-pointer"
+              className="w-full py-2.5 bg-[#0058be] hover:bg-[#2563eb] text-white font-semibold rounded-xl transition-all shadow-sm shadow-[#0058be]/10 cursor-pointer text-center"
             >
               Start Attendance Record Sheet
             </button>
@@ -349,11 +349,11 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
         </div>
 
         {/* ACTIVE LIST SESSIONS */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm transition-colors">
-            <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100 font-display border-b border-slate-100 dark:border-slate-800/60 pb-3 flex items-center justify-between">
+        <div className="lg:col-span-2 space-y-6 font-sans">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-2xl p-6 shadow-sm transition-colors">
+            <h3 className="text-sm font-semibold text-slate-805 dark:text-slate-105 font-sans border-b border-slate-150 dark:border-slate-850 pb-3 flex items-center justify-between">
               <span>Active Attendance Rosters</span>
-              <span className="text-[10px] font-mono uppercase bg-blue-50 dark:bg-blue-950 text-blue-600 px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-mono uppercase bg-blue-50 dark:bg-blue-950/40 text-[#0058be] px-2 py-0.5 rounded-full font-bold">
                 {activeSessions.length} active
               </span>
             </h3>
@@ -435,7 +435,7 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
 
               <button
                 onClick={handleSaveAttendanceDraft}
-                className="py-2.5 px-4 bg-emerald-600 hover:bg-emerald-750 text-white font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
+                className="py-2.5 px-4 bg-[#0058be] hover:bg-[#2563eb] text-white font-semibold rounded-xl shadow-sm transition-all cursor-pointer font-sans"
               >
                 Commit Compliance updates
               </button>
@@ -457,8 +457,8 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
                 {sheetDetails.records.map(rec => (
                   <tr key={rec.id} className="hover:bg-slate-55/40 dark:hover:bg-slate-950/20 text-slate-600 dark:text-slate-300">
                     <td className="px-5 py-4">
-                      <div className="font-semibold text-slate-800 dark:text-slate-100">{rec.userName}</div>
-                      <div className="text-[10px] text-slate-400">{rec.userEmail}</div>
+                      <div className="font-semibold text-slate-800 dark:text-slate-100 truncate max-w-[125px] sm:max-w-[185px]" title={rec.userName}>{rec.userName}</div>
+                      <div className="text-[10px] text-slate-400 truncate max-w-[125px] sm:max-w-[185px]" title={rec.userEmail}>{rec.userEmail}</div>
                     </td>
 
                     <td className="px-5 py-4 whitespace-nowrap text-center">
@@ -620,8 +620,8 @@ export default function TeacherPanel({ user }: TeacherPanelProps) {
 
       {/* LEAVE DECISION MODAL APPROVAL / REJECTION */}
       {moderatingLeave && moderationAction && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs px-4 animate-fade-in text-xs">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-xl animate-scale-up space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs px-4 py-6 overflow-y-auto animate-fade-in text-xs">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-xl my-auto max-h-[90vh] overflow-y-auto animate-scale-up space-y-4">
             <h3 className="text-sm font-bold font-display text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800 pb-2 flex items-center gap-1.5">
               {moderationAction === 'approve' ? (
                 <><CheckCircle className="w-4 h-4 text-emerald-500" /> Approve student leaves requests</>

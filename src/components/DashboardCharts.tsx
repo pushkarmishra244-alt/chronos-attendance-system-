@@ -25,8 +25,8 @@ interface PerformanceTrendProps {
 
 export function WeeklyTrendChart({ data }: PerformanceTrendProps) {
   return (
-    <div className="w-full h-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 mt-4 transition-colors">
-      <h3 className="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 font-display mb-4">
+    <div className="w-full h-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-150 dark:border-slate-850 p-5 mt-4 transition-colors font-sans">
+      <h3 className="text-base font-semibold tracking-tight text-slate-805 dark:text-slate-100 font-sans mb-4">
         Weekly Attendance Distribution
       </h3>
       <div className="w-full h-64">
@@ -86,15 +86,15 @@ export function DistributionPieChart({ present, absent, late }: DistributionProp
   ];
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 transition-colors flex flex-col justify-between">
+    <div className="w-full bg-white dark:bg-slate-900 rounded-2xl border border-slate-150 dark:border-slate-850 p-5 transition-colors flex flex-col justify-between font-sans">
       <div>
-        <h3 className="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 font-display">
+        <h3 className="text-base font-semibold tracking-tight text-slate-805 dark:text-slate-100 font-sans">
           Attendance Breakdown
         </h3>
         <p className="text-xs text-slate-500 mt-1">Status distribution count metrics.</p>
       </div>
 
-      <div className="relative flex justify-center items-center h-48 my-4">
+      <div className="relative flex justify-center items-center h-48 my-4 font-sans">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -122,14 +122,14 @@ export function DistributionPieChart({ present, absent, late }: DistributionProp
           </PieChart>
         </ResponsiveContainer>
         <div className="absolute text-center flex flex-col items-center">
-          <span className="text-2xl font-bold font-display text-slate-800 dark:text-slate-100">
+          <span className="text-2xl font-bold font-sans text-slate-805 dark:text-slate-100">
             {total > 0 ? Math.round(((present + late) / total) * 100) : 88}%
           </span>
           <span className="text-[10px] text-slate-400 font-mono tracking-wide uppercase">Present Rate</span>
         </div>
       </div>
 
-      <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800/60 font-mono text-xs">
+      <div className="space-y-1.5 pt-2 border-t border-slate-150 dark:border-slate-850 font-mono text-xs">
         {data.map((item, idx) => (
           <div key={idx} className="flex items-center justify-between text-slate-600 dark:text-slate-400">
             <div className="flex items-center gap-2">
@@ -150,8 +150,8 @@ interface DeptChartProps {
 
 export function DepartmentPerformanceChart({ data }: DeptChartProps) {
   return (
-    <div className="w-full h-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 transition-colors">
-      <h3 className="text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 font-display mb-1">
+    <div className="w-full h-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-150 dark:border-slate-850 p-5 transition-colors font-sans">
+      <h3 className="text-base font-semibold tracking-tight text-slate-805 dark:text-slate-100 font-sans mb-1">
         Department Comparison
       </h3>
       <p className="text-xs text-slate-500 mb-4 inline-block">Average presence percentage index per department.</p>
@@ -161,8 +161,8 @@ export function DepartmentPerformanceChart({ data }: DeptChartProps) {
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#0058be" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="#0058be" stopOpacity={0}/>
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" className="dark:stroke-slate-800" />
@@ -181,7 +181,7 @@ export function DepartmentPerformanceChart({ data }: DeptChartProps) {
               type="monotone" 
               dataKey="rate" 
               name="Attendance Rate (%)" 
-              stroke="#3b82f6" 
+              stroke="#0058be" 
               strokeWidth={2}
               fillOpacity={1} 
               fill="url(#colorRate)" 

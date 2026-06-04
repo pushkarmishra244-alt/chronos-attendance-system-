@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import { Notification } from '../types';
-import { Bell, CheckSquare, Sun, Moon, AlertTriangle } from 'lucide-react';
+import { Bell, CheckSquare, Sun, Moon, AlertTriangle, Menu } from 'lucide-react';
 
 interface HeaderProps {
   user: any;
   currentView: string;
   isDarkMode: boolean;
   onThemeToggle: () => void;
+  onMenuToggle?: () => void;
 }
 
-export default function Header({ user, currentView, isDarkMode, onThemeToggle }: HeaderProps) {
+export default function Header({ user, currentView, isDarkMode, onThemeToggle, onMenuToggle }: HeaderProps) {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [showDrawer, setShowDrawer] = useState(false);
   const [lowAttendanceWarning, setLowAttendanceWarning] = useState(false);
@@ -88,14 +89,26 @@ export default function Header({ user, currentView, isDarkMode, onThemeToggle }:
       )}
 
       {/* Main Header bar */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-6 py-4.5 flex justify-between items-center shadow-xs transition-all relative">
-        <div>
-          <span className="text-[10px] font-mono tracking-wider uppercase text-slate-400 font-semibold select-all">
-            Institution Location: PORT 3000 DEV GATEWAY
-          </span>
-          <h1 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 mt-0.5">
-            {getViewTitle()}
-          </h1>
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-4 md:px-6 py-3.5 md:py-4.5 flex justify-between items-center shadow-xs transition-all relative">
+        <div className="flex items-center gap-3">
+          {/* Hamburger Menu Toggle on Mobile */}
+          <button
+            type="button"
+            onClick={onMenuToggle}
+            className="md:hidden p-2.5 bg-slate-50 dark:bg-slate-850 hover:bg-slate-100 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800 rounded-xl transition-all cursor-pointer"
+            title="Expand Navigation Menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          
+          <div>
+            <span className="text-[10px] sm:text-[11px] font-mono tracking-wider uppercase text-slate-400 font-bold select-none">
+              Academic Year · Attendance Registry
+            </span>
+            <h1 className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 mt-0.5">
+              {getViewTitle()}
+            </h1>
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
@@ -129,7 +142,7 @@ export default function Header({ user, currentView, isDarkMode, onThemeToggle }:
 
             {/* NOTIFICATION FLUTTER DRAWER */}
             {showDrawer && (
-              <div className="absolute right-0 mt-3.5 z-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-80 shadow-2xl overflow-hidden animate-scale-up text-xs font-sans">
+              <div className="absolute right-0 mt-3.5 z-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-[calc(100vw-2rem)] sm:w-80 shadow-2xl overflow-hidden animate-scale-up text-xs font-sans">
                 <div className="px-5 py-4 bg-slate-50 dark:bg-slate-950 border-b border-slate-150 dark:border-slate-800 flex justify-between items-center">
                   <span className="font-semibold text-slate-805">Activities Inbox</span>
                   {unreadCount > 0 && (
@@ -169,12 +182,12 @@ export default function Header({ user, currentView, isDarkMode, onThemeToggle }:
 
           {/* QUICK INITIAL USER DISCOVERY AVATAR */}
           <div className="hidden sm:flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-3.5">
-            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex justify-center items-center font-bold text-xs shadow-md shadow-blue-500/10 font-mono uppercase">
-              {user.name.slice(0, 2)}
+            <div className="w-8 h-8 rounded-xl bg-[#0058be] text-white flex justify-center items-center font-semibold text-xs shadow-sm font-mono uppercase">
+              {user.name.slice(0, 2).toUpperCase()}
             </div>
             <div className="flex flex-col">
-              <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">{user.name}</span>
-              <span className="text-[9px] font-mono uppercase text-slate-400 font-bold">{user.role} badge</span>
+              <span className="text-[11px] font-semibold text-slate-800 dark:text-slate-200 leading-tight">{user.name}</span>
+              <span className="text-[9px] font-mono tracking-wide uppercase text-slate-455 font-bold">{user.role} badge</span>
             </div>
           </div>
 

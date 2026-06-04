@@ -17,15 +17,177 @@
   --color-slate-800: #1e293b;
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
+
+  /* Chronos Design System Theme Colors */
+  --color-surface-variant: #e0e3e5;
+  --color-inverse-on-surface: #eff1f3;
+  --color-inverse-primary: #adc6ff;
+  --color-inverse-surface: #2d3133;
+  --color-on-error-container: #93000a;
+  --color-background: #f7f9fb;
+  --color-on-error: #ffffff;
+  --color-primary-fixed-dim: #adc6ff;
+  --color-tertiary-fixed-dim: #b7c8e1;
+  --color-surface-white: #ffffff;
+  --color-on-background: #191c1e;
+  --color-on-tertiary-fixed: #0b1c30;
+  --color-on-tertiary-container: #fdfcff;
+  --color-surface-bright: #f7f9fb;
+  --color-on-secondary-fixed-variant: #3f465c;
+  --color-surface-container-highest: #e0e3e5;
+  --color-surface-dim: #d8dadc;
+  --color-on-tertiary: #ffffff;
+  --color-surface: #f7f9fb;
+  --color-on-surface: #191c1e;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #fefcff;
+  --color-on-secondary: #ffffff;
+  --color-secondary-fixed: #dae2fd;
+  --color-on-primary-fixed: #001a42;
+  --color-secondary: #565e74;
+  --color-secondary-fixed-dim: #bec6e0;
+  --color-on-secondary-fixed: #131b2e;
+  --color-chronos-blue: #3b82f6;
+  --color-outline: #727785;
+  --color-surface-container-high: #e6e8ea;
+  --color-error-container: #ffdad6;
+  --color-primary: #0058be;
+  --color-tertiary: #4d5d73;
+  --color-surface-container: #eceef0;
+  --color-primary-container: #2170e4;
+  --color-tertiary-fixed: #d3e4fe;
+  --color-action-hover: #2563eb;
+  --color-error: #ba1a1a;
+  --color-on-surface-variant: #424754;
+  --color-primary-fixed: #d8e2ff;
+  --color-secondary-container: #dae2fd;
+  --color-on-tertiary-fixed-variant: #38485d;
+  --color-surface-tint: #005ac2;
+  --color-surface-container-low: #f2f4f6;
+  --color-on-secondary-container: #5c647a;
+  --color-on-primary-fixed-variant: #004395;
+  --color-tertiary-container: #66768d;
+  --color-surface-container-lowest: #ffffff;
+  --color-outline-variant: #c2c6d6;
+
+  /* Rounded scale mapping */
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Custom Shadow for design system feel */
+  --shadow-chronos: 0px 4px 6px -1px rgba(15, 23, 42, 0.05), 0px 10px 15px -3px rgba(15, 23, 42, 0.1);
 }
 
-/* Custom styles for high-end professional UI */
+/* Base style mapping */
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-slate-50);
-  color: var(--color-slate-900);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
   margin: 0;
   padding: 0;
+}
+
+/* Consistent component classes for consolidated engineering styles */
+.chronos-card {
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-chronos);
+  transition: all 0.2s ease-in-out;
+}
+.dark .chronos-card {
+  background-color: var(--color-slate-900);
+  border-color: var(--color-slate-800);
+}
+
+.chronos-btn-primary {
+  background-color: var(--color-chronos-blue);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.chronos-btn-primary:hover {
+  background-color: var(--color-action-hover);
+  transform: translateY(-1px);
+}
+.chronos-btn-primary:active {
+  transform: translateY(0);
+}
+
+.chronos-btn-secondary {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-secondary-container);
+  border: 1px solid var(--color-outline-variant);
+  font-weight: 600;
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.chronos-btn-secondary:hover {
+  background-color: var(--color-surface-container-high);
+  color: var(--color-on-surface);
+}
+.dark .chronos-btn-secondary {
+  background-color: var(--color-slate-800);
+  border-color: var(--color-slate-750);
+  color: var(--color-slate-200);
+}
+.dark .chronos-btn-secondary:hover {
+  background-color: var(--color-slate-700);
+  color: #ffffff;
+}
+
+.chronos-input {
+  background-color: var(--color-surface-container-lowest);
+  color: var(--color-on-surface);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--radius-xl);
+  transition: all 0.2s ease-in-out;
+}
+.chronos-input:focus {
+  outline: none;
+  border-color: var(--color-chronos-blue);
+  box-shadow: 0 0 0 1px var(--color-chronos-blue);
+}
+.dark .chronos-input {
+  background-color: var(--color-slate-950);
+  border-color: var(--color-slate-800);
+}
+.dark .chronos-input:focus {
+  border-color: var(--color-chronos-blue);
+}
+
+.chronos-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+}
+.dark .chronos-label {
+  color: var(--color-slate-400);
+}
+
+.chronos-table-header {
+  background-color: var(--color-surface-container-low);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface-variant);
+  border-b: 1px solid var(--color-outline-variant);
+}
+.dark .chronos-table-header {
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-400);
+  border-color: var(--color-slate-800);
 }
 
 /* Scrollbar customization */
@@ -39,20 +201,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-outline-variant);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--color-outline);
 }
 
 /* QR Scanner simulation beam effect */

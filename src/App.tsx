@@ -35,6 +35,7 @@ export default function App() {
   const [loadingStats, setLoadingStats] = useState(false);
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Auth pages states
   const [authForm, setAuthForm] = useState({ email: '', password: '' });
@@ -432,37 +433,43 @@ export default function App() {
       <Sidebar 
         user={user} 
         currentView={currentView} 
-        onViewChange={setCurrentView} 
+        onViewChange={(view) => {
+          setCurrentView(view);
+          setIsSidebarOpen(false);
+        }} 
         onLogout={handleLogout}
         onRoleMockToggle={handleRoleMockToggle}
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
       />
 
       {/* Main console content wrapper */}
-      <main className="flex-1 flex flex-col h-screen overflow-y-auto p-6 space-y-6">
+      <main className="flex-1 flex flex-col h-screen overflow-y-auto p-3 sm:p-4 md:p-6 space-y-4 md:space-y-6">
         
         <Header 
           user={user} 
           currentView={currentView} 
           isDarkMode={isDarkMode} 
           onThemeToggle={handleThemeToggle} 
+          onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)}
         />
 
         <div className="flex-1 overflow-y-auto scrollbar pb-12 pr-1">
           {/* 1. MAIN GENERAL ANALYTICS DASHBOARD VIEW */}
           {currentView === 'dashboard' && (
-            <div className="space-y-6 animate-fade-in text-xs">
+            <div className="space-y-5 md:space-y-6 animate-fade-in text-xs">
               
               {/* Stats Card Bricks */}
               {loadingStats ? (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                   {[...Array(4)].map((_, i) => (
                     <div key={i} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl h-24 animate-pulse" />
                   ))}
                 </div>
               ) : stats ? (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 font-sans">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 font-sans">
                   
-                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950 flex justify-center items-center text-blue-600 dark:text-blue-400">
                       <Users className="w-5 h-5" />
                     </div>
@@ -472,7 +479,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 flex justify-center items-center text-emerald-600 dark:text-emerald-400">
                       <UserCheck className="w-5 h-5" />
                     </div>
@@ -482,7 +489,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950 flex justify-center items-center text-purple-600 dark:text-purple-400">
                       <GraduationCap className="w-5 h-5" />
                     </div>
@@ -492,7 +499,7 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
+                  <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-5 rounded-2xl flex items-center gap-4 shadow-sm transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950 flex justify-center items-center text-amber-600 dark:text-amber-400">
                       <CalendarMinus className="w-5 h-5" />
                     </div>
